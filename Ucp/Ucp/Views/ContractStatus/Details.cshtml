@@ -1,0 +1,26 @@
+﻿@model Ucp.Models.Data.ContractStatus
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ContractStatus</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ContrStatusVal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContrStatusVal)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ContractStatusId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

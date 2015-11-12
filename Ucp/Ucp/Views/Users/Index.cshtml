@@ -1,0 +1,57 @@
+﻿@model PagedList.IPagedList<Ucp.Models.Data.User>
+@using PagedList.Mvc;
+@using PagedList;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Ucp App - Пользователи";
+}
+
+<h2 class="text-primary">Пользователи</h2>
+
+<p class="add-btn">
+    @Html.ActionLink("Создать", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+@using (Html.BeginForm())
+{
+    <p class="text-right">
+        Поиск: @Html.TextBox("SearchString") &nbsp;
+        <input type="submit" value="Найти"  class="btn btn-primary" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>Название компании</th>
+        <th>Имя пользователя</th>
+        <th>Логин</th>
+        <th>Пароль</th>
+        <th>Действия</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Login)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить", "Edit", new { id=item.UserId }, new { @class = "btn-sm btn-warning" }) 
+            @Html.ActionLink("Посмотреть", "Details", new { id=item.UserId }, new { @class = "btn-sm btn-info" }) 
+            @Html.ActionLink("Удалить", "Delete", new { id=item.UserId }, new { @class = "btn-sm btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

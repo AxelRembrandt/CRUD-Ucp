@@ -1,0 +1,55 @@
+﻿@model Ucp.Models.Data.User
+
+@{
+    ViewBag.Title = "Ucp App - Удаление пользователя";
+}
+
+<h2 class="text-primary">Удаление пользователя</h2>
+
+<h4 class="text-danger">Вы уверены, что хотите удалить этого пользователя?</h4>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Company.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-danger" />
+            @Html.ActionLink("Отмена", "Index", null, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>
